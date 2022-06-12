@@ -605,6 +605,7 @@ PlayerSettings:
   webGLDecompressionFallback: 0
   scriptingDefineSymbols:
     Standalone: FISHNET
+    WebGL: FISHNET
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend:

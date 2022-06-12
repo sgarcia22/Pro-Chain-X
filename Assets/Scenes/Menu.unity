@@ -563,12 +563,44 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5302162188967417741, guid: a4aa8b0f3233b7546b89473920ffeec6, type: 3}
+      propertyPath: DefaultWallet
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5302162188967417741, guid: a4aa8b0f3233b7546b89473920ffeec6, type: 3}
       propertyPath: connectOnStart
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5302162188967417741, guid: a4aa8b0f3233b7546b89473920ffeec6, type: 3}
       propertyPath: autoSaveAndResume
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7582086179482937505, guid: a4aa8b0f3233b7546b89473920ffeec6, type: 3}
+      propertyPath: OnConnected.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7582086179482937505, guid: a4aa8b0f3233b7546b89473920ffeec6, type: 3}
+      propertyPath: OnConnected.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7582086179482937505, guid: a4aa8b0f3233b7546b89473920ffeec6, type: 3}
+      propertyPath: OnConnected.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1918157026}
+    - target: {fileID: 7582086179482937505, guid: a4aa8b0f3233b7546b89473920ffeec6, type: 3}
+      propertyPath: OnConnected.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7582086179482937505, guid: a4aa8b0f3233b7546b89473920ffeec6, type: 3}
+      propertyPath: OnConnected.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ConnectWallet
+      objectReference: {fileID: 0}
+    - target: {fileID: 7582086179482937505, guid: a4aa8b0f3233b7546b89473920ffeec6, type: 3}
+      propertyPath: OnConnected.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: WalletLogin, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7582086179482937505, guid: a4aa8b0f3233b7546b89473920ffeec6, type: 3}
+      propertyPath: OnConnected.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a4aa8b0f3233b7546b89473920ffeec6, type: 3}
@@ -799,6 +831,50 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4157864931984132566, guid: cf6797c23236b6c469dd7a3fa6d740bc, type: 3}
   m_PrefabInstance: {fileID: 1957884133}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1918157025
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1918157027}
+  - component: {fileID: 1918157026}
+  m_Layer: 0
+  m_Name: Wallet Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1918157026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1918157025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7e8f4ed064cdac4bbd287650b9adcea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1918157027
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1918157025}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2561.88, y: 1279.8832, z: -3121.6772}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1957884133
 PrefabInstance:
   m_ObjectHideFlags: 0
