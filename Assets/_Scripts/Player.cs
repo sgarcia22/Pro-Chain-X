@@ -2,6 +2,8 @@ using UnityEngine;
 using FishNet.Object;
 using FishNet.Object.Synchronizing;
 using UnityEngine.InputSystem;
+using UnityEngine.AddressableAssets;
+
 /// <summary>
 /// Networked player gameobject.
 /// </summary>
@@ -14,6 +16,9 @@ public class Player : NetworkBehaviour
     // Is the player ready to start the game (countdown, pre-condition). Make sure that all players are ready.
     [SyncVar]
     public bool isReady = false;
+
+    [SyncVar]
+    public Pawn controlledPawn;
 
     public override void OnStartServer()
     {
@@ -34,12 +39,24 @@ public class Player : NetworkBehaviour
         isReady = value;
     }
 
+    [ServerRpc]
+    private void ServerSpawnPawn() {
+        GameObject pawnPrefab = Addressables.LoadAssetAsync<GameObject>("Pawn").WaitForCompletion();
+        GameObject pawnInstance = Instantiate(pawnPrefab);
+        // pawnInstance.GetComponent<Pawn>().controllingPlayer = this;
+        // Spawn instance and make it's owner the current local connection
+        Spawn(pawnInstance, Owner);
+    }
+
     private void Update() {
         // Who is the owner of this player gameobject
         if (!IsOwner) return;
 
         if (Keyboard.current[Key.R].wasPressedThisFrame) {
             ServerSetIsReady(!isReady);
+        }
+         if (Keyboard.current[Key.I].wasPressedThisFrame) {
+            ServerSpawnPawn();
         }
     }
 }

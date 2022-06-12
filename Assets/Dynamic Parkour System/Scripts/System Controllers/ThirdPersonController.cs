@@ -149,6 +149,7 @@ namespace Climbing
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
         }
+        
         public Quaternion RotateToCameraDirection(Vector3 direction)
         {
             //Get direction with camera rotation
