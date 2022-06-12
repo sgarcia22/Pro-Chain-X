@@ -434,6 +434,21 @@ MonoBehaviour:
   _offlineScene: Assets/Scenes/Menu.unity
   _onlineScene: Assets/Scenes/Speedrunning.unity
   _replaceScenes: 2
+--- !u!114 &1866636891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1866636889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 211a9f6ec51ddc14f908f5acc0cd0423, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerPrefab: {fileID: 1653067068282307663, guid: b51816a297690664184f273b6f2a3df6, type: 3}
+  _addToDefaultScene: 0
+  Spawns: []
 --- !u!1001 &1957884133
 PrefabInstance:
   m_ObjectHideFlags: 0
