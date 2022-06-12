@@ -21,6 +21,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FishNet.Object;
+using FishNet.Object.Synchronizing;
 
 namespace Climbing
 {
@@ -31,7 +33,7 @@ namespace Climbing
     [RequireComponent(typeof(CameraController))]
     [RequireComponent(typeof(VaultingController))]
 
-    public class ThirdPersonController : MonoBehaviour
+    public class ThirdPersonController : NetworkBehaviour
     {
         [HideInInspector] public InputCharacterController characterInput;
         [HideInInspector] public MovementCharacterController characterMovement;
@@ -62,8 +64,12 @@ namespace Climbing
         private float turnSmoothTime = 0.1f;
         private float turnSmoothVelocity;
 
-        private void Awake()
+        public override void OnStartClient() // server?
         {
+            base.OnStartClient();
+
+            if (!IsOwner) return;
+
             characterInput = GetComponent<InputCharacterController>();
             characterMovement = GetComponent<MovementCharacterController>();
             characterAnimation = GetComponent<AnimationCharacterController>();
@@ -72,16 +78,33 @@ namespace Climbing
 
             if (cameraController == null)
                 Debug.LogError("Attach the Camera Controller located in the Free Look Camera");
-        }
 
-        private void Start()
-        {
             characterMovement.OnLanded += characterAnimation.Land;
             characterMovement.OnFall += characterAnimation.Fall;
         }
 
+        // private void Awake()
+        // {
+        //     characterInput = GetComponent<InputCharacterController>();
+        //     characterMovement = GetComponent<MovementCharacterController>();
+        //     characterAnimation = GetComponent<AnimationCharacterController>();
+        //     characterDetection = GetComponent<DetectionCharacterController>();
+        //     vaultingController = GetComponent<VaultingController>();
+
+        //     if (cameraController == null)
+        //         Debug.LogError("Attach the Camera Controller located in the Free Look Camera");
+        // }
+
+        // private void Start()
+        // {
+        //     characterMovement.OnLanded += characterAnimation.Land;
+        //     characterMovement.OnFall += characterAnimation.Fall;
+        // }
+
         void Update()
         {
+            if (!IsOwner) return;
+
             //Detect if Player is on Ground
             isGrounded = OnGround();
 
