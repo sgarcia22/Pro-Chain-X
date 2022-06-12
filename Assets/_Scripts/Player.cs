@@ -40,12 +40,19 @@ public class Player : NetworkBehaviour
     }
 
     [ServerRpc]
-    private void ServerSpawnPawn() {
+    public void StartGame() {
         GameObject pawnPrefab = Addressables.LoadAssetAsync<GameObject>("Pawn").WaitForCompletion();
         GameObject pawnInstance = Instantiate(pawnPrefab);
-        // pawnInstance.GetComponent<Pawn>().controllingPlayer = this;
         // Spawn instance and make it's owner the current local connection
         Spawn(pawnInstance, Owner);
+        controlledPawn = pawnInstance.GetComponent<Pawn>();
+        controlledPawn.controllingPlayer = this;
+    }
+
+    public void StopGame() {
+        if (controlledPawn != null && controlledPawn.IsSpawned) { // safety check
+            controlledPawn.Despawn();
+        }
     }
 
     private void Update() {
@@ -56,7 +63,7 @@ public class Player : NetworkBehaviour
             ServerSetIsReady(!isReady);
         }
          if (Keyboard.current[Key.I].wasPressedThisFrame) {
-            ServerSpawnPawn();
+            StartGame();
         }
     }
 }
