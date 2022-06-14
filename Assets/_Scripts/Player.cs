@@ -33,14 +33,23 @@ public class Player : NetworkBehaviour
         GameManager.Instance.players.Remove(this);
     }
 
+    public override void OnStartClient()
+    {
+        base.OnStartClient();
+        if (!IsOwner) return;
+        SpawnPlayer();
+    }
+
     // Client to server side. Call code to be executed on server side.
     [ServerRpc]
     public void ServerSetIsReady(bool value) {
         isReady = value;
     }
 
+    // TODO - player is ready when their wallet is connected
+
     [ServerRpc]
-    public void StartGame() {
+    public void SpawnPlayer() {
         GameObject pawnPrefab = Addressables.LoadAssetAsync<GameObject>("Pawn").WaitForCompletion();
         GameObject pawnInstance = Instantiate(pawnPrefab, transform.position, Quaternion.identity);
         // Spawn instance and make it's owner the current local connection
@@ -55,15 +64,15 @@ public class Player : NetworkBehaviour
         }
     }
 
-    private void Update() {
-        // Who is the owner of this player gameobject
-        if (!IsOwner) return;
+    // private void Update() {
+    //     // Who is the owner of this player gameobject
+    //     if (!IsOwner) return;
 
-        if (Keyboard.current[Key.R].wasPressedThisFrame) {
-            ServerSetIsReady(!isReady);
-        }
-         if (Keyboard.current[Key.I].wasPressedThisFrame) {
-            StartGame();
-        }
-    }
+    //     if (Keyboard.current[Key.R].wasPressedThisFrame) {
+    //         ServerSetIsReady(!isReady);
+    //     }
+    //      if (Keyboard.current[Key.I].wasPressedThisFrame) {
+    //         StartGame();
+    //     }
+    // }
 }

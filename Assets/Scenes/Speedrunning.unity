@@ -49133,8 +49133,7 @@ MonoBehaviour:
   _prefabId: -1
   _scenePathHash: 1386785410
   _sceneId: 5956197985731400606
-  _sceneNetworkObjects:
-  - {fileID: 1804651882}
+  _sceneNetworkObjects: []
 --- !u!114 &1804651883
 MonoBehaviour:
   m_ObjectHideFlags: 0

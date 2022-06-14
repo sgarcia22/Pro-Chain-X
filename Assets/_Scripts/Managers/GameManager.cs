@@ -2,6 +2,7 @@ using UnityEngine;
 using FishNet.Object;
 using FishNet.Object.Synchronizing;
 using System.Linq;
+using FishNet;
 
 public sealed class GameManager : NetworkBehaviour
 {
@@ -22,16 +23,24 @@ public sealed class GameManager : NetworkBehaviour
         Instance = this;
     }
 
-    private void Update() {
-        if (!IsServer) return;
+    // private void Update() {
+    //     if (!IsServer) return;
 
-        if (players.Count != 0) {
-            canStart = players.All(player => player.isReady);
-            Debug.LogFormat("Can start, {0}", canStart);
-            if (canStart) {
-                StartGame();
-            }
+    //     if (players.Count != 0) {
+    //         canStart = players.All(player => player.isReady);
+    //         Debug.LogFormat("Can start, {0}", canStart);
+    //         if (canStart) {
+    //             StartGame();
+    //         }
+    //     }
+    // }
+
+    public void AddPlayer() {
+        // Start server if we are the first player
+        if (players.Count == 0) {
+         InstanceFinder.ServerManager.StartConnection();
         }
+        InstanceFinder.ClientManager.StartConnection();
     }
 
     [Server]
@@ -41,7 +50,7 @@ public sealed class GameManager : NetworkBehaviour
         
         foreach (Player player in players)
         {
-            player.StartGame();
+            // player.StartGame();
         }
     }
 
