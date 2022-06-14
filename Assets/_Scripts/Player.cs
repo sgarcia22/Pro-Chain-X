@@ -42,7 +42,7 @@ public class Player : NetworkBehaviour
     [ServerRpc]
     public void StartGame() {
         GameObject pawnPrefab = Addressables.LoadAssetAsync<GameObject>("Pawn").WaitForCompletion();
-        GameObject pawnInstance = Instantiate(pawnPrefab);
+        GameObject pawnInstance = Instantiate(pawnPrefab, transform.position, Quaternion.identity);
         // Spawn instance and make it's owner the current local connection
         Spawn(pawnInstance, Owner);
         controlledPawn = pawnInstance.GetComponent<Pawn>();

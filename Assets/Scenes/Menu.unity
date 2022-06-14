@@ -762,7 +762,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerPrefab: {fileID: 1653067068282307663, guid: b51816a297690664184f273b6f2a3df6, type: 3}
   _addToDefaultScene: 0
-  Spawns: []
+  Spawns:
+  - {fileID: 780916509805749295, guid: 784b77ff1a089a4419687ccebd762fc6, type: 3}
 --- !u!224 &1909952821 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4157864931984132566, guid: cf6797c23236b6c469dd7a3fa6d740bc, type: 3}
