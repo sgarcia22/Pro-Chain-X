@@ -12,6 +12,7 @@ public class WalletLogin : MonoBehaviour
         if (MoralisState.Initialized.Equals(Moralis.State))
             {
                 MoralisUser user = await Moralis.GetUserAsync();
+                Debug.Log(user.ethAddress);
 
                 if (user == null)
                 {

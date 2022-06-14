@@ -153,7 +153,7 @@ namespace MoralisUnity.Kits.AuthenticationKit
 					// Show Button "Connect"
 					SetActiveUIAllParts(false);
 					_connectButton.gameObject.SetActive(true);
-					_backgroundImage.gameObject.SetActive(true);
+					// _backgroundImage.gameObject.SetActive(true);
             		
                     break;
                 case AuthenticationKitState.Connecting:
