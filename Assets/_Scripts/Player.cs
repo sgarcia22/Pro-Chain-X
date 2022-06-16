@@ -36,7 +36,7 @@ public class Player : NetworkBehaviour
     public override void OnStartClient()
     {
         base.OnStartClient();
-        if (!IsOwner) return;
+        if (!IsOwner) return; // TODO - do we need this?
         SpawnPlayer();
     }
 
