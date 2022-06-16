@@ -19,6 +19,8 @@ public sealed class GameManager : NetworkBehaviour
     [SyncVar]
     private bool gameRunning = false;
 
+    public Player currentPlayer;
+
     private void Awake() {
         Instance = this;
     }

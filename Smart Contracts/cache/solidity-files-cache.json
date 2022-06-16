@@ -334,8 +334,8 @@
       ]
     },
     "C:\\Users\\saman\\Desktop\\Pro-Chain-X\\Smart Contracts\\contracts\\NftShop.sol": {
-      "lastModificationDate": 1655409996739,
-      "contentHash": "799c9eb370c8cce5d40d986ad514a9c5",
+      "lastModificationDate": 1655416262969,
+      "contentHash": "a4fea056addd492d1a3eb7dc8cc868ba",
       "sourceName": "contracts/NftShop.sol",
       "solcConfig": {
         "version": "0.8.12",

@@ -3,6 +3,11 @@ using FishNet.Object;
 using FishNet.Object.Synchronizing;
 using UnityEngine.InputSystem;
 using UnityEngine.AddressableAssets;
+using MoralisUnity;
+using MoralisUnity.Web3Api.Models;
+using MoralisUnity.Platform.Objects;
+using System.Collections.Generic;
+using System.Linq;
 
 /// <summary>
 /// Networked player gameobject.
@@ -19,6 +24,11 @@ public class Player : NetworkBehaviour
 
     [SyncVar]
     public Pawn controlledPawn;
+
+    public bool arenaAccess = false;
+
+    // Arena NFT
+    private const string contractAddress = "0x51729BCaaF96F08f8Dd0e3758821fc440503bBC3";
 
     public override void OnStartServer()
     {
@@ -38,6 +48,25 @@ public class Player : NetworkBehaviour
         base.OnStartClient();
         if (!IsOwner) return; // TODO - do we need this?
         SpawnPlayer();
+        GameManager.Instance.currentPlayer = this;
+        CheckArenaNFTOwnership();
+    }
+
+    private async void CheckArenaNFTOwnership() { 
+        MoralisUser user = await Moralis.GetUserAsync();
+        string address = user.ethAddress;
+        Debug.Log("Checking NFTs on: " + address);
+        // TODO - update to mumbai
+        NftOwnerCollection nft = await Moralis.GetClient().Web3Api.Account.GetNFTsForContract(address.ToLower(), contractAddress, ChainList.ropsten); 
+        List<NftOwner> nftOwners = nft.Result;
+        if (!nftOwners.Any())
+            {
+                Debug.Log("You don't own any NFT");
+                return;
+            }
+        else {
+            arenaAccess = true;
+        }
     }
 
     // Client to server side. Call code to be executed on server side.
