@@ -9,6 +9,8 @@ TagManager:
   - Vault
   - Slide
   - Deep Jump
+  - QrConnectMenu
+  - IOSConnectMenu
   layers:
   - Default
   - TransparentFX
@@ -21,7 +23,7 @@ TagManager:
   - Ledge
   - Wall
   - Player
-  - 
+  - Clickable
   - 
   - 
   - 
