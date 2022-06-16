@@ -28,7 +28,9 @@ public class Player : NetworkBehaviour
     public bool arenaAccess = false;
 
     // Arena NFT
-    private const string contractAddress = "0x51729BCaaF96F08f8Dd0e3758821fc440503bBC3";
+    // private const string contractAddress = "0x51729BCaaF96F08f8Dd0e3758821fc440503bBC3";
+    private const string contractAddress = "0xEE4b72cE7543b62a738E24519B27ac1775c90fCE";
+    private const string contractAddressRopsten = "0xEE4b72cE7543b62a738E24519B27ac1775c90fCE";
 
     public override void OnStartServer()
     {
@@ -57,7 +59,8 @@ public class Player : NetworkBehaviour
         string address = user.ethAddress;
         Debug.Log("Checking NFTs on: " + address);
         // TODO - update to mumbai
-        NftOwnerCollection nft = await Moralis.GetClient().Web3Api.Account.GetNFTsForContract(address.ToLower(), contractAddress, ChainList.ropsten); 
+        NftOwnerCollection nft = await Moralis.GetClient().Web3Api.Account.GetNFTsForContract(address.ToLower(), contractAddress, ChainList.mumbai);
+        Debug.Log(nft.Total);
         List<NftOwner> nftOwners = nft.Result;
         if (!nftOwners.Any())
             {
