@@ -15,7 +15,7 @@ public class MatchManager : NetworkBehaviour
     [Server]
     public void StartMatch(SyncList<Player> queue) {
         // Teleport all of the players to the arena
-
+        
         // Disable Movement
 
         // Start Countdown

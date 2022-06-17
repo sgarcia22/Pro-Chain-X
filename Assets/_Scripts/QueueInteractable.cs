@@ -1,10 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using FishNet;
-using FishNet.Object;
 
-public class QueueInteractable : NetworkBehaviour, IClick
+public class QueueInteractable : MonoBehaviour, IClick
 {
     public void OnClick()
     {

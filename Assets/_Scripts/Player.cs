@@ -26,6 +26,7 @@ public class Player : NetworkBehaviour
     public Pawn controlledPawn;
 
     public bool arenaAccess = false;
+    public bool inQueue = false;
 
     // Arena NFT
     // private const string contractAddress = "0x51729BCaaF96F08f8Dd0e3758821fc440503bBC3";
