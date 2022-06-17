@@ -18,6 +18,9 @@ public class QueueManager : NetworkBehaviour
     [SyncVar]
     public int roundTimeInSeconds = 300;
 
+    [SyncVar]
+    public int currentCountdownTime;
+
     [SerializeField]
 
     private WaitForSeconds waitForSeconds;
@@ -26,6 +29,7 @@ public class QueueManager : NetworkBehaviour
     private UnityEvent AddToQueueEvent;
     [SerializeField]
     private UnityEvent<int> countdownTime;
+    
 
     private void Awake() {
         Instance = this;
@@ -33,12 +37,21 @@ public class QueueManager : NetworkBehaviour
         // StartCoroutine(MatchLogic());
     }
 
+
     public override void OnStartServer()
     {
         base.OnStartServer();
         StartCoroutine(MatchLogic());
         StartCoroutine(Countdown(roundTimeInSeconds));
     }
+
+    // public override void OnStartClient()
+    // {
+    //     base.OnStartClient();
+    //     if (!IsOwner) return;
+    //     Debug.Log("Start Client");
+    //     StartCoroutine(Countdown(roundTimeInSeconds));
+    // }
 
     [Server]
     public void AddToQueue(Player player) {
@@ -64,15 +77,20 @@ public class QueueManager : NetworkBehaviour
  
     IEnumerator Countdown (int seconds) {
         while (true) {
-            int counter = seconds;
+            currentCountdownTime = seconds;
             // Debug.Log(counter);
-            countdownTime.Invoke(counter);
-                while (counter > 0) {
+            SendCountdownEvent();
+                while (currentCountdownTime > 0) {
                     // Debug.Log(counter);
                     yield return new WaitForSeconds (1);
-                    counter--;
-                    countdownTime.Invoke(counter);
+                    currentCountdownTime--;
+                    SendCountdownEvent();
                 }
         }
+    }
+
+    [ObserversRpc]
+    private void SendCountdownEvent() {
+        countdownTime.Invoke(currentCountdownTime);
     }
 }
