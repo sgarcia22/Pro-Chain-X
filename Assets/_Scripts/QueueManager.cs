@@ -3,18 +3,20 @@ using FishNet.Object;
 using FishNet.Object.Synchronizing;
 using System.Collections;
 using UnityEngine.Events;
+
 public class QueueManager : NetworkBehaviour
 {
     public static QueueManager Instance { get; private set; }
 
+    // TODO - set private
     [SyncObject, Tooltip("List of players in the queue")]
-    private readonly SyncList<Player> queue = new();
+    public readonly SyncList<Player> queue = new();
 
     [SyncVar]
     public int maximumAmountOfPlayers = 10;
 
     [SyncVar]
-    public int roundTimeInMinutes = 5*60;
+    public int roundTimeInSeconds = 300;
 
     [SerializeField]
 
@@ -27,8 +29,7 @@ public class QueueManager : NetworkBehaviour
 
     private void Awake() {
         Instance = this;
-        waitForSeconds = new WaitForSeconds(roundTimeInMinutes);
-    StartCoroutine(Countdown(roundTimeInMinutes));
+        waitForSeconds = new WaitForSeconds(roundTimeInSeconds);
         // StartCoroutine(MatchLogic());
     }
 
@@ -36,6 +37,7 @@ public class QueueManager : NetworkBehaviour
     {
         base.OnStartServer();
         StartCoroutine(MatchLogic());
+        StartCoroutine(Countdown(roundTimeInSeconds));
     }
 
     [Server]
@@ -53,22 +55,24 @@ public class QueueManager : NetworkBehaviour
     private IEnumerator MatchLogic() {
         while (true) {
             yield return waitForSeconds;
-            while (queue.Count < 2) {
-                yield return null;
-                countdownTime.Invoke(-1);
+            if (queue.Count >= 2) {
+                // Only start the match if there are two or more players, otherwise restart the timer.
+                MatchManager.Instance.StartMatch(queue);
             }
-            MatchManager.Instance.StartMatch(queue);
         }
     }
-
+ 
     IEnumerator Countdown (int seconds) {
-        int counter = seconds;
-        Debug.Log(counter);
-        countdownTime.Invoke(counter);
-        while (counter > 0) {
-            yield return new WaitForSeconds (1);
-            counter--;
+        while (true) {
+            int counter = seconds;
+            // Debug.Log(counter);
             countdownTime.Invoke(counter);
+                while (counter > 0) {
+                    // Debug.Log(counter);
+                    yield return new WaitForSeconds (1);
+                    counter--;
+                    countdownTime.Invoke(counter);
+                }
         }
     }
 }

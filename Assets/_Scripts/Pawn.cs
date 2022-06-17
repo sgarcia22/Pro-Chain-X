@@ -2,6 +2,7 @@ using FishNet.Object;
 using FishNet.Object.Synchronizing;
 using UnityEngine;
 using System.Collections.Generic;
+using Climbing;
 
 public class Pawn : NetworkBehaviour
 {
@@ -12,6 +13,8 @@ public class Pawn : NetworkBehaviour
     private List<GameObject> localObjects;
     [SerializeField]
     private List<Behaviour> localComponents;
+    
+    public InputCharacterController controller;
 
     public override void OnStartClient() // server?
     {
