@@ -35,8 +35,8 @@ public class MatchManager : NetworkBehaviour
         foreach (Player player in queue)
         {
             player.controlledPawn.controller.enabled = false;
-            player.controlledPawn.transform.position = spawnPoints[index++].position;
-            player.controlledPawn.transform.LookAt(Vector3.forward);
+            player.controlledPawn.character.transform.position = spawnPoints[index++].position;
+            player.controlledPawn.character.transform.LookAt(Vector3.forward);
         }
 
         // Start Countdown

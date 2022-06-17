@@ -9,12 +9,14 @@ public class Pawn : NetworkBehaviour
     [SyncVar]
     public Player controllingPlayer;
 
+    // TODO: Make neater
+    public GameObject character;
+    public InputCharacterController controller;
+
     [SerializeField]
     private List<GameObject> localObjects;
     [SerializeField]
     private List<Behaviour> localComponents;
-    
-    public InputCharacterController controller;
 
     public override void OnStartClient() // server?
     {

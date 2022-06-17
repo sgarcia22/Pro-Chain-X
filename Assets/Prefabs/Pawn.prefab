@@ -1324,6 +1324,7 @@ MonoBehaviour:
   _addedNetworkObject: {fileID: 854703744728448026}
   _networkObjectCache: {fileID: 854703744728448026}
   controllingPlayer: {fileID: 0}
+  character: {fileID: 3385140369183094702}
   localObjects:
   - {fileID: 3385140370441904018}
   - {fileID: 3385140369562113076}
@@ -1363,7 +1364,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3385140370615857702}
-  m_LocalRotation: {x: 0.19662078, y: -0.6420334, z: 0.25605848, w: 0.6953902}
+  m_LocalRotation: {x: 0.19662079, y: -0.6420334, z: 0.2560585, w: 0.69539016}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1523,8 +1524,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3385140370795139883}
-  m_LocalRotation: {x: 0.23993234, y: -0.60949665, z: 0.2007511, w: 0.7284541}
-  m_LocalPosition: {x: 4.650067, y: 5.0317273, z: -0.760239}
+  m_LocalRotation: {x: 0.23993233, y: -0.60949665, z: 0.20075108, w: 0.7284541}
+  m_LocalPosition: {x: 4.6500673, y: 5.0317273, z: -0.760239}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1687,7 +1688,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3385140370896474240}
-  m_LocalRotation: {x: 0.17123106, y: -0.650911, z: 0.23256765, w: 0.7020735}
+  m_LocalRotation: {x: 0.17123105, y: -0.650911, z: 0.23256771, w: 0.70207345}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
