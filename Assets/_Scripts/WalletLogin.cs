@@ -5,6 +5,9 @@ using MoralisUnity;
 using MoralisUnity.Platform.Objects;
 using MoralisUnity.Web3Api.Models;
 
+/// <summary>
+/// Sample Moralis Unity SDK script to access values. Not used in the game.
+/// </summary>
 public class WalletLogin : MonoBehaviour
 {
     public async void ConnectWallet() {

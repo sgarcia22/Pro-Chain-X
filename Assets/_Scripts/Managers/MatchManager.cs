@@ -5,6 +5,9 @@ using FishNet.Object;
 using FishNet.Object.Synchronizing;
 using UnityEngine.Events;
 
+/// <summary>
+/// Manages the beginning and end of an arena match start. On start, all players are teleported to the area where a countdown begins. Then the players try to reach the goal as fast as they can. The first player is the winner and gets a distribution from the betting pool funds.
+/// </summary>
 public class MatchManager : NetworkBehaviour
 {
     public static MatchManager Instance { get; private set; }
@@ -15,9 +18,6 @@ public class MatchManager : NetworkBehaviour
     private List<Transform> spawnPoints;
     [SyncObject, Tooltip("List of players in the queue")]
     public readonly SyncList<Player> winners = new();
-
-    [SerializeField]
-    // private int lengthOfMatchInSeconds = 290; // QueueManager roundTimeInSeconds - the 10 second countdowntimer
 
     private void Awake() {
         Instance = this;
@@ -34,8 +34,6 @@ public class MatchManager : NetworkBehaviour
     }
 
     public IEnumerator StartMatch(SyncList<Player> queue) {
-        // Disable Movement
-
         // Teleport all of the players to the arena
         int index = 0;
         foreach (Player player in queue)
@@ -54,14 +52,16 @@ public class MatchManager : NetworkBehaviour
             player.controlledPawn.controller.enabled = true;
         }
 
-        // Invoke the Unity Event
-        // Have the timer placed on the player's UI
         MatchStarted.Invoke();
     }
 
     [Server]
     public void AddWinner(Player player) {
         winners.Add(player);
+        // Stop the game
+        
+        // Call the bet contract to distribute funds
+
     }
 
 }

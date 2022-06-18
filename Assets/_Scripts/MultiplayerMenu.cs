@@ -2,6 +2,9 @@ using FishNet;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Menu to begin host or client multiplayer instance.
+/// </summary>
 public class MultiplayerMenu : MonoBehaviour
 {
     [SerializeField]

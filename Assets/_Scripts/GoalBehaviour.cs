@@ -1,9 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using FishNet.Object;
-using FishNet.Connection;
 
+/// <summary>
+/// Called on the client upon successful reach of the goal and udpates the winners list in the server.
+/// </summary>
 public class GoalBehaviour : NetworkBehaviour
 {
     private void OnTriggerEnter(Collider other) {

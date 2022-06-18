@@ -1,9 +1,8 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 /// <summary>
-/// 
+/// Casts a ray against 3D colliders and calls the IClick interface if hitting a valid object.
 /// </summary>
 public class ClickRaycast : MonoBehaviour
 {

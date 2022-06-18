@@ -1,6 +1,9 @@
 using UnityEngine;
 using TMPro;
 
+/// <summary>
+/// Formats and updates the UI timer for the next match and current match countdown.
+/// </summary>
 public class CountdownTimerUIManager : MonoBehaviour
 {
     [SerializeField]

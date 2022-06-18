@@ -10,7 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 /// <summary>
-/// Networked player gameobject.
+/// Represents the connected networked player gameobject. Spawns the player into the scene and checks NFT ownership.
 /// </summary>
 public class Player : NetworkBehaviour
 {
@@ -30,13 +30,10 @@ public class Player : NetworkBehaviour
     public bool inQueue = false;
 
     // Arena NFT
-    // private const string contractAddress = "0x51729BCaaF96F08f8Dd0e3758821fc440503bBC3";
     private const string contractAddress = "0xEE4b72cE7543b62a738E24519B27ac1775c90fCE";
-    private const string contractAddressRopsten = "0xEE4b72cE7543b62a738E24519B27ac1775c90fCE";
 
     public override void OnStartServer()
     {
-        // Always call this first, can cause bugs otherwise
         base.OnStartServer();
         GameManager.Instance.players.Add(this);
     }
@@ -60,7 +57,6 @@ public class Player : NetworkBehaviour
         MoralisUser user = await Moralis.GetUserAsync();
         string address = user.ethAddress;
         Debug.Log("Checking NFTs on: " + address);
-        // TODO - update to mumbai
         NftOwnerCollection nft = await Moralis.GetClient().Web3Api.Account.GetNFTsForContract(address.ToLower(), contractAddress, ChainList.mumbai);
         Debug.Log(nft.Total);
         List<NftOwner> nftOwners = nft.Result;
@@ -74,13 +70,10 @@ public class Player : NetworkBehaviour
         }
     }
 
-    // Client to server side. Call code to be executed on server side.
     [ServerRpc]
     public void ServerSetIsReady(bool value) {
         isReady = value;
     }
-
-    // TODO - player is ready when their wallet is connected
 
     [ServerRpc]
     public void SpawnPlayer() {
@@ -98,15 +91,4 @@ public class Player : NetworkBehaviour
         }
     }
 
-    // private void Update() {
-    //     // Who is the owner of this player gameobject
-    //     if (!IsOwner) return;
-
-    //     if (Keyboard.current[Key.R].wasPressedThisFrame) {
-    //         ServerSetIsReady(!isReady);
-    //     }
-    //      if (Keyboard.current[Key.I].wasPressedThisFrame) {
-    //         StartGame();
-    //     }
-    // }
 }

@@ -5,6 +5,9 @@ using System.Collections;
 using UnityEngine.Events;
 using FishNet.Connection;
 
+/// <summary>
+/// Manages server and client side queue logic. Players click on the queue column to get added to the queue for the next Arena match if they have the Arena NFT for access.
+/// </summary>
 public class QueueManager : NetworkBehaviour
 {
     public static QueueManager Instance { get; private set; }
@@ -35,7 +38,6 @@ public class QueueManager : NetworkBehaviour
     private void Awake() {
         Instance = this;
         waitForSeconds = new WaitForSeconds(roundTimeInSeconds);
-        // StartCoroutine(MatchLogic());
     }
 
 
@@ -46,15 +48,6 @@ public class QueueManager : NetworkBehaviour
         StartCoroutine(Countdown(roundTimeInSeconds));
     }
 
-    // public override void OnStartClient()
-    // {
-    //     base.OnStartClient();
-    //     if (!IsOwner) return;
-    //     Debug.Log("Start Client");
-    //     StartCoroutine(Countdown(roundTimeInSeconds));
-    // }
-
-    // [ServerRpc]
     [ServerRpc(RequireOwnership = false)]
     public void AddToQueue(Player player) {
         if (!player.inQueue && queue.Count < maximumAmountOfPlayers) {
@@ -92,10 +85,8 @@ public class QueueManager : NetworkBehaviour
     IEnumerator Countdown (int seconds) {
         while (true) {
             currentCountdownTime = seconds;
-            // Debug.Log(counter);
             SendCountdownEvent();
                 while (currentCountdownTime > 0) {
-                    // Debug.Log(counter);
                     yield return new WaitForSeconds (1);
                     currentCountdownTime--;
                     SendCountdownEvent();

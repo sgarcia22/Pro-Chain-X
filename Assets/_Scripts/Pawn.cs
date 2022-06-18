@@ -4,12 +4,15 @@ using UnityEngine;
 using System.Collections.Generic;
 using Climbing;
 
+/// <summary>
+/// A pawn is owned by a player, which is a NetworkedConnection. A pawn is the object the player controls. This script disables access to input and other scripts that do not belong to the current player.
+/// </summary>
 public class Pawn : NetworkBehaviour
 {
     [SyncVar]
     public Player controllingPlayer;
 
-    // TODO: Make neater
+    // TODO: make private
     public GameObject character;
     public InputCharacterController controller;
 
@@ -18,10 +21,10 @@ public class Pawn : NetworkBehaviour
     [SerializeField]
     private List<Behaviour> localComponents;
 
-    public override void OnStartClient() // server?
+    public override void OnStartClient()
     {
         base.OnStartClient();
-        // Let player control
+        // Let the player control it's own pawn
         if (!IsOwner) {
             foreach (GameObject item in localObjects)
             {
