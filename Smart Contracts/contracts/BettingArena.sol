@@ -15,7 +15,7 @@ contract BettingArena is Ownable{
     mapping(address => address) internal betterToPlayer;
     // betters
     address[] public bettersAddresses;
-    uint256 totalValueBet;
+    uint256 totalValueBet = 0;
 
     function _resetBets() private {
         totalValueBet = 0;
