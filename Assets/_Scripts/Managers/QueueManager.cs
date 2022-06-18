@@ -48,6 +48,11 @@ public class QueueManager : NetworkBehaviour
         StartCoroutine(Countdown(roundTimeInSeconds));
     }
 
+    [ServerRpc(RequireOwnership=false)]
+    public void ResetQueue() {
+        queue.Clear();
+    }
+
     [ServerRpc(RequireOwnership = false)]
     public void AddToQueue(Player player) {
         if (!player.inQueue && queue.Count < maximumAmountOfPlayers) {

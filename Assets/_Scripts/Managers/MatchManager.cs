@@ -13,11 +13,17 @@ public class MatchManager : NetworkBehaviour
     public static MatchManager Instance { get; private set; }
 
     [SerializeField]
+    private Transform hubSpawn;
+    [SerializeField]
     private UnityEvent MatchStarted;
     [SerializeField]
+    private UnityEvent<string> GameOver;
+    [SerializeField]
     private List<Transform> spawnPoints;
+    // [SyncObject, Tooltip("List of players in the queue")]
+    // public readonly SyncList<Player> winners = new();
     [SyncObject, Tooltip("List of players in the queue")]
-    public readonly SyncList<Player> winners = new();
+    public readonly SyncList<Player> players = new();
 
     private void Awake() {
         Instance = this;
@@ -41,7 +47,11 @@ public class MatchManager : NetworkBehaviour
             player.controlledPawn.controller.enabled = false;
             player.controlledPawn.character.transform.position = spawnPoints[index++].position;
             player.controlledPawn.character.transform.LookAt(Vector3.forward);
+            players.Add(player);
         }
+
+        // Reset the queue
+        QueueManager.Instance.ResetQueue();
 
         // Start Countdown
         yield return new WaitForSeconds(10);
@@ -56,12 +66,18 @@ public class MatchManager : NetworkBehaviour
     }
 
     [Server]
-    public void AddWinner(Player player) {
-        winners.Add(player);
+    public void AddWinner(Player winner) {
         // Stop the game
-        
-        // Call the bet contract to distribute funds
+        foreach (Player player in players)
+        {
+            player.controlledPawn.controller.enabled = false;
+            player.controlledPawn.character.transform.position = hubSpawn.position;
+            player.controlledPawn.character.transform.LookAt(Vector3.forward);
+            players.Add(player);
+        }
 
+        // Call the bet contract to distribute funds
+        GameOver.Invoke(winner.userAddress);
     }
 
 }

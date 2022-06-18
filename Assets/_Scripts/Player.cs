@@ -28,6 +28,8 @@ public class Player : NetworkBehaviour
     public bool arenaAccess = false;
     [SyncVar]
     public bool inQueue = false;
+    [SyncVar]
+    public string userAddress = "";
 
     // Arena NFT
     private const string contractAddress = "0xEE4b72cE7543b62a738E24519B27ac1775c90fCE";
@@ -56,6 +58,7 @@ public class Player : NetworkBehaviour
     private async void CheckArenaNFTOwnership() { 
         MoralisUser user = await Moralis.GetUserAsync();
         string address = user.ethAddress;
+        userAddress = address;
         Debug.Log("Checking NFTs on: " + address);
         NftOwnerCollection nft = await Moralis.GetClient().Web3Api.Account.GetNFTsForContract(address.ToLower(), contractAddress, ChainList.mumbai);
         Debug.Log(nft.Total);
