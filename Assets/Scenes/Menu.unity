@@ -643,8 +643,8 @@ Camera:
   m_GameObject: {fileID: 1757354797}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.6886792, g: 0.30580667, b: 0.2566305, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -875,6 +875,54 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4157864930949828267, guid: cf6797c23236b6c469dd7a3fa6d740bc, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4157864930949828267, guid: cf6797c23236b6c469dd7a3fa6d740bc, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4157864930949828267, guid: cf6797c23236b6c469dd7a3fa6d740bc, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4157864930949828267, guid: cf6797c23236b6c469dd7a3fa6d740bc, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4157864930949828267, guid: cf6797c23236b6c469dd7a3fa6d740bc, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4157864930949828267, guid: cf6797c23236b6c469dd7a3fa6d740bc, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4157864930949828267, guid: cf6797c23236b6c469dd7a3fa6d740bc, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -857
+      objectReference: {fileID: 0}
+    - target: {fileID: 4157864930949828267, guid: cf6797c23236b6c469dd7a3fa6d740bc, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 425
+      objectReference: {fileID: 0}
+    - target: {fileID: 4157864931211181595, guid: cf6797c23236b6c469dd7a3fa6d740bc, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 180.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4157864931211181595, guid: cf6797c23236b6c469dd7a3fa6d740bc, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 65.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4157864931211181595, guid: cf6797c23236b6c469dd7a3fa6d740bc, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4157864931211181595, guid: cf6797c23236b6c469dd7a3fa6d740bc, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4157864931211181596, guid: cf6797c23236b6c469dd7a3fa6d740bc, type: 3}
       propertyPath: m_Interactable
       value: 0
@@ -942,6 +990,14 @@ PrefabInstance:
     - target: {fileID: 4157864931804430323, guid: cf6797c23236b6c469dd7a3fa6d740bc, type: 3}
       propertyPath: m_text
       value: Play
+      objectReference: {fileID: 0}
+    - target: {fileID: 4157864931804430323, guid: cf6797c23236b6c469dd7a3fa6d740bc, type: 3}
+      propertyPath: m_fontSize
+      value: 54.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 4157864931804430323, guid: cf6797c23236b6c469dd7a3fa6d740bc, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 54.35
       objectReference: {fileID: 0}
     - target: {fileID: 4157864931984132562, guid: cf6797c23236b6c469dd7a3fa6d740bc, type: 3}
       propertyPath: m_Name
@@ -2936,7 +2992,19 @@ MonoBehaviour:
         m_CallState: 2
   OnDisconnected:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1468158473}
+        m_TargetAssemblyTypeName: UnityEngine.UI.Selectable, UnityEngine.UI
+        m_MethodName: set_interactable
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnStateChanged:
     m_PersistentCalls:
       m_Calls: []
