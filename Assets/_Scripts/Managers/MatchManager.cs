@@ -4,6 +4,7 @@ using UnityEngine;
 using FishNet.Object;
 using FishNet.Object.Synchronizing;
 using UnityEngine.Events;
+using Cinemachine;
 
 /// <summary>
 /// Manages the beginning and end of an arena match start. On start, all players are teleported to the area where a countdown begins. Then the players try to reach the goal as fast as they can. The first player is the winner and gets a distribution from the betting pool funds.
@@ -20,6 +21,8 @@ public class MatchManager : NetworkBehaviour
     private UnityEvent<string> GameOver;
     [SerializeField]
     private List<Transform> spawnPoints;
+    [SerializeField, Tooltip("Used to follow multiple Transforms, in this case players")]
+    private CinemachineTargetGroup cinemachineTargetGroup;
     // [SyncObject, Tooltip("List of players in the queue")]
     // public readonly SyncList<Player> winners = new();
     [SyncObject, Tooltip("List of players in the queue")]
@@ -51,6 +54,7 @@ public class MatchManager : NetworkBehaviour
             player.controlledPawn.character.transform.position = spawnPoints[index++].position;
             player.controlledPawn.character.transform.LookAt(Vector3.forward);
             players.Add(player);
+            cinemachineTargetGroup.AddMember(player.controlledPawn.character.transform, 1, 2);
         }
 
         // Reset the queue
@@ -77,6 +81,7 @@ public class MatchManager : NetworkBehaviour
             player.controlledPawn.character.transform.position = hubSpawn.position;
             player.controlledPawn.character.transform.LookAt(Vector3.forward);
             players.Add(player);
+            cinemachineTargetGroup.RemoveMember(player.controlledPawn.character.transform);
         }
 
         // Call the bet contract to distribute funds
