@@ -13,6 +13,8 @@ public class MatchManager : NetworkBehaviour
     private UnityEvent MatchStarted;
     [SerializeField]
     private List<Transform> spawnPoints;
+    [SyncObject, Tooltip("List of players in the queue")]
+    public readonly SyncList<Player> winners = new();
 
     [SerializeField]
     // private int lengthOfMatchInSeconds = 290; // QueueManager roundTimeInSeconds - the 10 second countdowntimer
@@ -56,4 +58,10 @@ public class MatchManager : NetworkBehaviour
         // Have the timer placed on the player's UI
         MatchStarted.Invoke();
     }
+
+    [Server]
+    public void AddWinner(Player player) {
+        winners.Add(player);
+    }
+
 }
