@@ -3,6 +3,7 @@ using FishNet.Object.Synchronizing;
 using UnityEngine;
 using System.Collections.Generic;
 using Climbing;
+using Cinemachine;
 
 /// <summary>
 /// A pawn is owned by a player, which is a NetworkedConnection. A pawn is the object the player controls. This script disables access to input and other scripts that do not belong to the current player.
@@ -34,6 +35,12 @@ public class Pawn : NetworkBehaviour
             {
                 item.enabled = false;
             }
+        }
+        else {
+            GameObject streamCamera = GameObject.FindGameObjectWithTag("CinemachineStreamCamera");
+            if (streamCamera == null) return;
+            streamCamera.GetComponent<CinemachineVirtualCamera>().Follow = character.transform;
+            streamCamera.GetComponent<CinemachineVirtualCamera>().LookAt = character.transform;
         }
     }
 }

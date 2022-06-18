@@ -25010,7 +25010,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh100134
+  m_Name: pb_Mesh120816
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -26589,7 +26589,7 @@ GameObject:
   - component: {fileID: 889431887}
   m_Layer: 12
   m_Name: Target Group Follow Cinemachine
-  m_TagString: Untagged
+  m_TagString: CinemachineStreamCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26661,7 +26661,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_PositionMode: 0
-  m_RotationMode: 0
+  m_RotationMode: 1
   m_UpdateMethod: 2
   m_Targets: []
 --- !u!1 &889841828
@@ -29318,7 +29318,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh112882
+  m_Name: pb_Mesh120194
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -35912,7 +35912,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 1
-  m_FollowOffset: {x: 0, y: 0, z: -10}
+  m_FollowOffset: {x: 0, y: 4.14, z: -10}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1

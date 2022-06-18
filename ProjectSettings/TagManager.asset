@@ -11,6 +11,7 @@ TagManager:
   - Deep Jump
   - QrConnectMenu
   - IOSConnectMenu
+  - CinemachineStreamCamera
   layers:
   - Default
   - TransparentFX
