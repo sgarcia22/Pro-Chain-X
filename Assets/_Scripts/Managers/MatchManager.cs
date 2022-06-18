@@ -44,7 +44,7 @@ public class MatchManager : NetworkBehaviour
 
     public IEnumerator StartMatch(SyncList<Player> queue) {
         // Set list of players to access after resetting the queue.
-        SyncList<Player> playerList = queue;
+        // SyncList<Player> playerList = queue;
         
         // Teleport all of the players to the arena
         int index = 0;
@@ -57,17 +57,21 @@ public class MatchManager : NetworkBehaviour
             cinemachineTargetGroup.AddMember(player.controlledPawn.character.transform, 1, 2);
         }
 
-        // Reset the queue
-        QueueManager.Instance.ResetQueue();
+        // // Reset the queue
+        // QueueManager.Instance.ResetQueue();
 
         // Start Countdown
         yield return new WaitForSeconds(10);
 
         // Once countdown is done, enable movement
-        foreach (Player player in playerList)
+        // TODO - race condition. Make sure others can't join the queue or have 2 different queues.
+        foreach (Player player in queue)
         {
             player.controlledPawn.controller.enabled = true;
         }
+
+        // Reset the queue
+        QueueManager.Instance.ResetQueue();
 
         MatchStarted.Invoke();
     }
