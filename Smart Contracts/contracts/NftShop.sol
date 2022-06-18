@@ -6,8 +6,6 @@ import "@openzeppelin/contracts/token/ERC1155/ERC1155.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "hardhat/console.sol";
 
-// TODO - function to increase price of NFT
-
 contract NftShop is ERC1155, Ownable  {
    uint256 public price = 0.01 ether;
 
@@ -29,6 +27,5 @@ contract NftShop is ERC1155, Ownable  {
         require(msg.value >= price, "Not enough ether for transaction");
         // Mint the NFT
        _mint(msg.sender, 0, 1, "");
-       // Increment the unique NFT identifier
    }
 }
