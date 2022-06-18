@@ -28,7 +28,11 @@ public class BettingPool : NetworkBehaviour
     /// <param name="walletAddress">Wallet address of the player the current user wants to bet on.</param>
     /// <param name="amount">How much the user is willing to place in the pool to bet on the player with the specified wallet address.</param>
     [ServerRpc(RequireOwnership = false)]
-    public async void AddFunds() {
+    public void AddFunds() {
+        AddFundsAsync();
+    }
+
+    public async void AddFundsAsync() {
         object[] parameters = {
             betAddress.text,
             betAmount.text
@@ -54,7 +58,11 @@ public class BettingPool : NetworkBehaviour
     /// Called after the match ends and distributes the pool to the winning party and player.
     /// </summary>
     [ServerRpc(RequireOwnership = false)]
-    public async void DistributeFunds(string winner) {
+    public void DistributeFunds(string winner) {
+        DistributeFundsAsync(winner);
+    }
+
+    public async void DistributeFundsAsync(string winner) {
         object[] parameters = {
             winner
         };

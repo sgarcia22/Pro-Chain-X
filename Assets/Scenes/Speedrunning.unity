@@ -44756,6 +44756,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7217291056384756051, guid: 6fe6945eae55ff347ac93ffd3e398db6, type: 3}
   m_PrefabInstance: {fileID: 1248849254}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1604232914
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1604232915}
+  m_Layer: 0
+  m_Name: Hub Spawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1604232915
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1604232914}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -25, y: 0, z: -14.4}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2041374532}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1604664913
 GameObject:
   m_ObjectHideFlags: 0
@@ -51324,6 +51355,7 @@ MonoBehaviour:
   - {fileID: 1804651883}
   - {fileID: 1804651885}
   - {fileID: 1804651886}
+  - {fileID: 1804651887}
   SceneTransformProperties:
     Position: {x: 126.51846, y: 899.1851, z: 0}
     Rotation: {x: 0, y: 0, z: 0, w: 1}
@@ -51458,6 +51490,7 @@ MonoBehaviour:
   _componentIndexCache: 2
   _addedNetworkObject: {fileID: 1804651882}
   _networkObjectCache: {fileID: 1804651882}
+  hubSpawn: {fileID: 0}
   MatchStarted:
     m_PersistentCalls:
       m_Calls:
@@ -51473,6 +51506,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+  GameOver:
+    m_PersistentCalls:
+      m_Calls: []
   spawnPoints:
   - {fileID: 985727883}
   - {fileID: 668660511}
@@ -51496,6 +51532,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fb97dc2d7715b646af893127fd19191, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _componentIndexCache: 3
+  _addedNetworkObject: {fileID: 1804651882}
+  _networkObjectCache: {fileID: 1804651882}
   betAddress: {fileID: 1352595890}
   betAmount: {fileID: 1076108954}
 --- !u!1001 &1807919682
@@ -57267,6 +57306,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 92410516}
+  - {fileID: 1604232915}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
