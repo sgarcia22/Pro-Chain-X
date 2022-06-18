@@ -30,7 +30,7 @@ public class MatchManager : NetworkBehaviour
     }
 
     [ContextMenu("Start Match")]
-    private void StartMatchInspector() {
+    public void StartMatchInspector() {
         StartMatchAllClients();
     }
 
@@ -40,6 +40,9 @@ public class MatchManager : NetworkBehaviour
     }
 
     public IEnumerator StartMatch(SyncList<Player> queue) {
+        // Set list of players to access after resetting the queue.
+        SyncList<Player> playerList = queue;
+        
         // Teleport all of the players to the arena
         int index = 0;
         foreach (Player player in queue)
@@ -57,7 +60,7 @@ public class MatchManager : NetworkBehaviour
         yield return new WaitForSeconds(10);
 
         // Once countdown is done, enable movement
-        foreach (Player player in queue)
+        foreach (Player player in playerList)
         {
             player.controlledPawn.controller.enabled = true;
         }
