@@ -1,12 +1,12 @@
 using UnityEngine;
 using FishNet.Object;
 using FishNet.Object.Synchronizing;
-using UnityEngine.InputSystem;
+using System.Collections.Generic;
+using System.Collections;
 using UnityEngine.AddressableAssets;
 using MoralisUnity;
 using MoralisUnity.Web3Api.Models;
 using MoralisUnity.Platform.Objects;
-using System.Collections.Generic;
 using System.Linq;
 
 /// <summary>
@@ -52,7 +52,22 @@ public class Player : NetworkBehaviour
         if (!IsOwner) return; // TODO - do we need this?
         SpawnPlayer();
         GameManager.Instance.currentPlayer = this;
-        CheckArenaNFTOwnership();
+        StartCoroutine(CheckArenaNFTOwnershipCoroutine());
+    }
+
+    /// <summary>
+    ///  Run every 30 seconds to check if NFT was purchased.
+    /// This is really innefficient. But due to time constraints
+    /// this was the easiest option. Ideally we should check via
+    /// Moralis with a callback once the transaction has been
+    /// completed.
+    /// </summary>
+    IEnumerator CheckArenaNFTOwnershipCoroutine() {
+        WaitForSeconds waitForSeconds = new WaitForSeconds(30f);
+        while (!arenaAccess) {
+            CheckArenaNFTOwnership();
+            yield return waitForSeconds;
+        }
     }
 
     private async void CheckArenaNFTOwnership() { 
