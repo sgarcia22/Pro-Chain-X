@@ -3,6 +3,7 @@ using FishNet.Object;
 using FishNet.Object.Synchronizing;
 using System.Collections;
 using UnityEngine.Events;
+using FishNet.Connection;
 
 public class QueueManager : NetworkBehaviour
 {
@@ -53,14 +54,27 @@ public class QueueManager : NetworkBehaviour
     //     StartCoroutine(Countdown(roundTimeInSeconds));
     // }
 
-    [Server]
+    // [ServerRpc]
+    [ServerRpc(RequireOwnership = false)]
     public void AddToQueue(Player player) {
         if (!player.inQueue && queue.Count < maximumAmountOfPlayers) {
             queue.Add(player);
-            Debug.Log("Added player to queue");
-            AddToQueueEvent.Invoke();
-            player.inQueue = true;
+            AfterAddToQueue(player);
         }
+    }
+
+    [ObserversRpc]
+    private void AfterAddToQueue(Player player) {
+        Debug.LogFormat("IN QUEUE {0}",queue.Count);
+        Debug.Log("Added player to queue");
+        // TODO - update client
+        NotifyPlayerAddedToQueue(player.Owner);
+        player.inQueue = true;
+    }
+
+    [TargetRpc]
+    private void NotifyPlayerAddedToQueue(NetworkConnection conn) {
+        AddToQueueEvent.Invoke();
     }
 
     // Queue logic

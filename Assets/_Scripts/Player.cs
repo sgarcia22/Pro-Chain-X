@@ -24,8 +24,9 @@ public class Player : NetworkBehaviour
 
     [SyncVar]
     public Pawn controlledPawn;
-
+    [SyncVar]
     public bool arenaAccess = false;
+    [SyncVar]
     public bool inQueue = false;
 
     // Arena NFT
