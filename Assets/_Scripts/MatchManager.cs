@@ -23,10 +23,14 @@ public class MatchManager : NetworkBehaviour
 
     [ContextMenu("Start Match")]
     private void StartMatchInspector() {
+        StartMatchAllClients();
+    }
+
+    [ObserversRpc]
+    private void StartMatchAllClients() {
         StartCoroutine(StartMatch(QueueManager.Instance.queue));
     }
 
-    [Server]
     public IEnumerator StartMatch(SyncList<Player> queue) {
         // Disable Movement
 
