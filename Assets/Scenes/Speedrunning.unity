@@ -41382,14 +41382,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1477471544}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -26.92, y: 21.74, z: 51.58}
+  m_LocalRotation: {x: -0, y: 0.058536805, z: -0, w: 0.9982853}
+  m_LocalPosition: {x: -26.920002, y: 21.95, z: 52.090004}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2104490473}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 6.712, z: 0}
 --- !u!65 &1477471546
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -41433,8 +41433,8 @@ MonoBehaviour:
   _networkBehaviours:
   - {fileID: 1477471547}
   SceneTransformProperties:
-    Position: {x: -20.161427, y: 15.945254, z: 73.783104}
-    Rotation: {x: -0, y: -0, z: -0, w: 1}
+    Position: {x: -20.161427, y: 16.155254, z: 74.293106}
+    Rotation: {x: -0, y: 0.058536805, z: -0, w: 0.9982853}
     LocalScale: {x: 1, y: 1, z: 1}
   _isNetworked: 1
   _hasParentNetworkObjectAtEdit: 0
@@ -42361,6 +42361,8 @@ MonoBehaviour:
   _scenePathHash: 1386785410
   _sceneId: 5956197985502800950
   _sceneNetworkObjects:
+  - {fileID: 1477471548}
+  - {fileID: 2104490474}
   - {fileID: 1503860053}
   - {fileID: 1804651882}
 --- !u!1001 &1507863235
@@ -50018,6 +50020,7 @@ MonoBehaviour:
   _scenePathHash: 1386785410
   _sceneId: 5956197985731400606
   _sceneNetworkObjects:
+  - {fileID: 1477471548}
   - {fileID: 2104490474}
   - {fileID: 1503860053}
   - {fileID: 1804651882}
@@ -56599,7 +56602,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _networkBehaviours:
-  - {fileID: 0}
+  - {fileID: 1477471547}
   SceneTransformProperties:
     Position: {x: 6.7585745, y: -5.7947454, z: 22.203104}
     Rotation: {x: 0, y: 0, z: 0, w: 1}
@@ -56611,6 +56614,7 @@ MonoBehaviour:
   _scenePathHash: 1386785410
   _sceneId: 5956197985693461583
   _sceneNetworkObjects:
+  - {fileID: 1477471548}
   - {fileID: 2104490474}
   - {fileID: 1503860053}
   - {fileID: 1804651882}
