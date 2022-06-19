@@ -21,6 +21,10 @@ MonoBehaviour:
     m_Address: Pawn
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 9acc6431400a36b419df763cc0a53fac
+    m_Address: Pawn2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 175fc05143c26524ca3e4a5a6ec98f41, type: 2}
   m_SchemaSet:

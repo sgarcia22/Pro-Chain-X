@@ -7,7 +7,7 @@ using FishNet.Object;
 public class GoalBehaviour : NetworkBehaviour
 {
     private void OnTriggerEnter(Collider other) {
-        UpdateWinners( other.gameObject.GetComponent<Pawn>().controllingPlayer);
+        UpdateWinners( other.gameObject.transform.parent.GetComponent<Pawn>().controllingPlayer);
     }
 
     [ServerRpc(RequireOwnership = false)]
